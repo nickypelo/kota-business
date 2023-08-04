@@ -26,3 +26,11 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+
+ul{
+  display: flex;
+}
+
+li{
+  list-style: none;
+}
