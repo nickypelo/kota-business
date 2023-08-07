@@ -1,0 +1,59 @@
+.header{
+    background-image: linear-gradient(red, yellow);
+    display: flex;
+    font-size: 1.5rem;
+    max-height: 3.33em;
+}
+
+.logo-placeholder{
+    width: 40%;
+    margin: 0.5em;
+    text-align: center;
+}
+
+.logo-image{
+    width: 6.25em;
+    height: 100%
+}
+
+.nav-bar{
+    width: 40%;
+    font-size: 1.2rem;
+    margin: 0.625em;
+}
+
+.nav-bar ul li{
+    display: inline-block;
+}
+
+.nav-bar a{
+    font-family:'Times New Roman', Times, serif;
+    text-decoration: none;
+    font-weight:500;
+    font-size: 1.5rem;
+    display: flex;
+    padding: 0.5em;
+}
+
+.nav-bar a:hover{
+    background-color: brown;
+    color: beige;
+}
+
+.nav-bar a:visited{
+    color: black;
+}
+
+.cart-icon{
+    margin: 0.5em;
+    padding: 0.5em;
+}
+
+.orders-placed{
+    /* display:inline; */
+    background-color: #fff;
+    height: 150px;
+    width:300px;
+    position:relative;
+    z-index: 1;
+}

@@ -1,0 +1,22 @@
+.poster{
+    min-height: 50vh;
+    background-image: url('../../images/lovie_wam.jpg');
+    background-size: cover;
+}
+
+.special{
+    margin-top: 24px;
+    background-image: url('../../images/discount_2.jpg');
+    min-height: 50vh;
+}
+
+.content{
+    min-height: 75vh;
+    margin: 0px 24px;
+}
+
+.reviews{
+    margin: 25px 15px;
+    width: 200px;
+    height: 200px;
+}

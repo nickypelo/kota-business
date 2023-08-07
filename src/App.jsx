@@ -1,6 +1,7 @@
+import React from "react";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
-import Contact from "./components/Contact.jsx";
+import Contact from "./pages/Contact.jsx";
 import Content from "./pages/Content.jsx";
 import Menu from "./pages/Menu.jsx";
 import About from "./pages/About.jsx";
@@ -20,9 +21,9 @@ function App() {
           <Route path ='/contact' element={<Contact/>}/>
           <Route path ='/about' element={<About/>}/>
         </Routes>
+      <Footer />
       </Router>
       
-      <Footer />
     </div>
   );
 }
