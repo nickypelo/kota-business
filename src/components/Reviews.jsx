@@ -1,25 +1,38 @@
+import React from "react";
+
 import '../styles/components.css';
 
 const Reviews = () => {
     const pics = [
         {
             id: 1,
-            picture: "Its a review"
+            picture: "src/assets/review_1.jpg",
+            caption: 'customer 1'
         },
         {
             id: 2,
-            picture: "Its a review Again"
+            picture: "src/assets/review_2.jpg",
+            caption: 'customer 2'
+        },
+        {
+            id: 3,
+            picture: "src/assets/review_3.jpg",
+            caption: 'customer 2'
+        },
+        {
+            id: 4,
+            picture: "src/assets/review_5.jpg",
+            caption: 'customer 2'
         }
     ]
     return (
-        <section className="response">
+        <section className="reviews">
             {pics.map((review)=>(
-                <article className="reviews">
-                    <figure className="feedback">
-                        <img src="" alt="review" />
-                        <figcaption>{review.picture}</figcaption>
-                    </figure>
-                </article>
+                <figure className="feedback">
+                    <img src={review.picture} alt="review" />
+                    <figcaption>{review.caption}</figcaption>
+                </figure>
+               
             ))}
         </section>
     )

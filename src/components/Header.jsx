@@ -1,3 +1,4 @@
+import React from "react";
 import Nav from "./Nav.jsx";
 import Cart from "./Cart.jsx";
 import {useState} from 'react';

@@ -1,13 +1,16 @@
+import React from "react";
 import '../styles/components.css';
 
 const Cart = ({kota, close}) => {
 
-    const orders = [];
+    const orders = [7];
 
     return(
         <article className="orders-placed">
-            <h4>Cart</h4>
-            <p onClick={close}>X</p>
+            <section className='cart-heading'>
+                <h4>Cart</h4>
+                <p onClick={close}>x</p>
+            </section>
             {orders.length<1 ? 
                 <p>Empty</p> 
                 :
@@ -16,6 +19,7 @@ const Cart = ({kota, close}) => {
                         <p>Buy this kota?</p>
                     </div>
                     <figure className="order-image">
+                        <img src="src/assets/bae.jpg" alt=""  />
                         <figcaption>{kota}</figcaption>
                     </figure>
                 </section>      

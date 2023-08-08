@@ -4,6 +4,10 @@
   font-weight: 400;
 }
 
+html{
+  scroll-behavior: smooth;
+}
+
 
 *{
   margin: 0;
@@ -13,4 +17,5 @@
 
 body{
   min-height: 100vh;
+  /* background-image: linear-gradient(red, yellow); */
 }
