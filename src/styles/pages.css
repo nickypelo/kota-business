@@ -1,20 +1,70 @@
+h3{
+    padding: 0 1.5rem;
+    margin-bottom: 0.5rem;
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 3rem;
+}
+
+.hashtag{
+    min-height: 36;
+}
+
+.App{
+    display: flex;
+    flex-direction: column;
+}
+
 .poster{
-    min-height: 50vh;
-    background-image: url('src/assets/lovie_wam.jpg');
+    height: 60vh;
+    background-image: url(src/assets/lovie_wam.jpg);
+    background-position: center center;
     background-size: cover;
+}
+
+.poster p{
+    font-size: 3rem;
+    color: #000;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    display: flex;
+    align-items: center;
+    height: 60vh;
 }
 
 .special{
     margin: 1em auto;
+    box-shadow: -2px -2px 7px;
     min-height: 50vh;
-    text-align: right;
-    padding: 1em 
-
+    text-align: center;
+    padding: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.text{
+    flex-grow: 1;
+    padding: 1em;
+    margin-right: 0,5em;
+    text-align: center;
+    width: min(45%, 350px);
+    font-weight: bolder;
+    font-family:sans-serif;
 }
 
-.special img{
-    height: 720px;
-    width: 50%;   
+.text p{
+    margin-top: 1em;
+    padding-top: 1em;
+    
+}
+
+.special figure{
+    width: min(100%, 400px);
+    padding: 0.5em;
+    margin: 0.5em;
+}
+
+.special img{ 
+    min-width: 100%;
 }
 
 .content{
@@ -33,6 +83,64 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    min-height: 800px
+    min-height: 800px;
 }
 
+.menu{
+    padding: 1em;
+    min-height: 100vh;
+    width: min(80%, 1000px);
+    margin: 0 auto;
+    background-image: radial-gradient(whitesmoke, rgb(194, 126, 42));
+}
+
+.menu h1{
+    padding: 0.5em;
+    font-size: 2rem;
+    text-align: center;
+    border: 3px dotted
+}
+
+.menu-option{
+    display: flex;
+    padding: 1em;
+    margin: 1em;
+    border: 1px solid burlywood;
+    box-shadow: 2px 2px 3px burlywood;
+}
+
+.kota-img, .kota-img img{
+    border-radius: 1rem;
+}
+
+.kota-img{
+    margin: 1em;
+    border: 7px solid lightblue;
+    width: 350px;
+    height: 250px;
+    background-image: url(../assets/chip_roll.jpg);
+    background-size: cover;
+    background-position: center center;
+}
+
+.kota-details{
+    width: 40%;
+    margin-left: 1em;
+}
+
+.name-price{
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1.5rem;
+    border-bottom: 1px solid;
+}
+
+.ingredients{
+    margin-top: 1em;
+    font-size: 1.2rem;
+}
+
+.about{
+    height: 50vh;
+}

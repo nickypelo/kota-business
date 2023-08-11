@@ -1,0 +1,102 @@
+/*  || SMALL SCREEN */
+img{
+    display: block;
+    max-width: 100%;
+    height: auto;
+}
+
+
+@media screen and (min-width: 375px){
+    body{
+        width: 100%;
+        background-image: radial-gradient(yellow, red);
+    }
+
+    .logo-placeholder{
+        width: 80%;
+    }
+
+    .special p{
+        width: 300;
+        
+    }
+
+    .footer{
+        justify-content: center;
+    }
+
+    .reviews figcaption{
+        text-align: center;
+    }
+
+    .nav-bar{
+        display: none;
+    }
+
+    .nav-small{
+        display: none;
+        position: absolute;
+        top: 3.33em;
+        right: 0;
+        background-color: bisque;
+        width: min(40%, 350px);
+        
+    }
+    .nav-small ul li{
+        list-style: none;
+        display: block;
+        padding-left: 1rem;
+        border-bottom: 1px solid lightcoral;
+    }
+
+    .nav-small a, .nav-small:visited{
+        text-decoration: none;
+        color: black
+    }
+    
+}
+
+/*  || MEDIUM SCREEN */
+@media screen and (min-width: 412px){
+    .company-section figure img{
+        margin: 0 auto;;
+    }
+
+}
+
+/*  || TABLET */
+@media screen and (min-width: 768px){
+    .special figure{
+        /* background-color: black; */
+        width: 100%;
+        padding: 0.5em;
+        margin: 0.5em;
+    }
+}
+
+@media screen and (min-width: 915px){
+    
+    .nav-small{
+        display: none;
+    }
+    .logo-placeholder{
+        max-width: 40%;
+    }
+    .menu-icon{
+        display: none;
+    }
+    .nav-bar{
+        display: block;
+    }
+}
+
+/* SMALL LAPTOP*/
+@media screen and (min-width: 1024px){
+    .ceo-quote p{
+        width: 45%;
+    }
+
+    .ceo-quote figure{
+        width: 50%
+    }
+}

@@ -1,15 +1,16 @@
 import React from "react";
+import { FaWindowClose } from "react-icons/fa";
 import '../styles/components.css';
 
 const Cart = ({kota, close}) => {
 
-    const orders = [7];
+    const orders = [];
 
     return(
         <article className="orders-placed">
             <section className='cart-heading'>
                 <h4>Cart</h4>
-                <p onClick={close}>x</p>
+                <FaWindowClose class="close-cart" onClick={close} />
             </section>
             {orders.length<1 ? 
                 <p>Empty</p> 

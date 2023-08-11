@@ -1,8 +1,12 @@
 import React from "react";
+import '../styles/pages.css';
+import '../styles/media.css';
 
 const About = () =>{
     return (
-        <div>Hey</div>
+        <>
+            <div className="about">chickens bruh</div>
+        </>
     )
 }
 

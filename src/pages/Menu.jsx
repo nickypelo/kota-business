@@ -1,39 +1,42 @@
 import React from "react";
-import { useState } from "react"
-
+import { useState, useEffect } from "react"
+import item from '../assets/chip_roll.jpg';
 const Menu = () => {
-    const menuItem = [
-        {
-            id: 1,
-            name: "CHIP ROLL KOTA",
-            price: "R30.00",
-            ingredients: "Deep fried chips with our special seasoning topped off with mango atchaar on toasted buns with our secret assorted sauces.",
-            img: "picture"
-        },
-        {
-            id: 2,
-            name: "The Bae KOTA",
-            price: "R60.00",
-            ingredients: "Deep fried chips with our special seasoning topped off with mango atchaar on toasted buns with our secret assorted sauces.",
-            img: "picture"
-        }
-    ]
+    const API_URL = 'http://localhost:5500/menu';
 
+    const [menuItems, setMenuItems] = useState([]);
+
+    useEffect(() =>{
+
+        const fetchItems = async () =>{
+            try {
+                const response = await fetch(API_URL);
+                const menuList = await response.json();
+                console.log(menuList)
+                setMenuItems(menuList);
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        fetchItems();
+    }, [])
     const order = () => {
         console.log("add to cart")
     }
 
     return(
-        <section className="Menu">
+        <section className="menu">
             <h1>Menu</h1>
             <div className="menu-list">
-                {menuItem.map((menu)=>(
-                    <article className="menu-option">
-                        <div className="kota-img" onClick={order}>{menu.img}</div>
+                {menuItems.map((menu)=>(
+                    <article className="menu-option" key={menu.id}>
+                        <figure className="kota-img" style={{backgroundImage: `url(${menu.img})`}} onClick={order}></figure>
                         <div className="kota-details">
-                            <p className="kota-name">{menu.name}</p>
-                            <p className="kota-price">{menu.price}</p>
-                            <div className="ingredients">{menu.ingredients}</div>
+                            <div className="name-price">
+                                <p>{menu.name}</p>
+                                <p>{menu.price}</p>
+                            </div>
+                            <p className="ingredients">{menu.ingredients}</p>
                         </div>
                         
                     </article>

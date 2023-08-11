@@ -1,17 +1,21 @@
 import React from "react";
 import Nav from "./Nav.jsx";
+import NavSmall from "./Nav-small.jsx";
 import Cart from "./Cart.jsx";
-import {useState} from 'react';
+import { useState } from 'react';
 import logo from '/kotalicious_cpt-20220806-0006.jpg';
+import { FaShoppingCart, FaYinYang} from "react-icons/fa";
 import '../styles/components.css';
+import '../styles/media.css';
 
 
 const Header = () =>{
     const [showCart, setShowCart] = useState(true);
-
+    // const [menu, setMenu] = useState(true);
+    // const change = {display : "none"}
     const cartClick = () => {
         console.log(`Cart Activated`);
-        setShowCart(!showCart);
+        setShowCart(!showCart);   
     }
 
     return(
@@ -22,12 +26,17 @@ const Header = () =>{
                     />
             </figure>
             <Nav />
-            {showCart ? <p className= "cart-icon" onClick={cartClick}>
-                cart
-            </p>
-            : <Cart kota="The Bae Kota" close={cartClick}
-            />}
-        </header>
+            <section className="header-icons">
+                <NavSmall/>
+                <FaYinYang onClick={cartClick} className="cart-icon menu-icon"/>
+                {showCart ?
+                <FaShoppingCart onClick={cartClick} className= "cart-icon" />
+                : <Cart kota="The Bae Kota" close={cartClick}
+                />}
+            </section>
+            
+        </header>            
+
     )
 }
 

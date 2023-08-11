@@ -1,5 +1,5 @@
 import React from "react";
-
+import '../styles/media.css';
 import '../styles/components.css';
 
 const Reviews = () => {
@@ -7,28 +7,28 @@ const Reviews = () => {
         {
             id: 1,
             picture: "src/assets/review_1.jpg",
-            caption: 'customer 1'
+            caption: 'client 1'
         },
         {
             id: 2,
             picture: "src/assets/review_2.jpg",
-            caption: 'customer 2'
+            caption: 'client 2'
         },
         {
             id: 3,
             picture: "src/assets/review_3.jpg",
-            caption: 'customer 2'
+            caption: 'client 3'
         },
         {
             id: 4,
             picture: "src/assets/review_5.jpg",
-            caption: 'customer 2'
+            caption: 'client 4'
         }
     ]
     return (
         <section className="reviews">
             {pics.map((review)=>(
-                <figure className="feedback">
+                <figure className="feedback" key={review.id}>
                     <img src={review.picture} alt="review" />
                     <figcaption>{review.caption}</figcaption>
                 </figure>
