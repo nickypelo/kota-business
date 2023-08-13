@@ -2,8 +2,11 @@
   "name": "kota-business",
   "private": true,
   "version": "0.0.0",
+  "homepage": "https://nickypelo.github.io/kota-business",
   "type": "module",
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint src --ext js,jsx --report-unused-disable-directives --max-warnings 0",
@@ -12,7 +15,6 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-favicon": "^2.0.3",
     "react-icons": "^4.10.1",
     "react-router-dom": "^6.14.2"
   },

@@ -1,11 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import {FaWindowClose} from 'react-icons/fa';
 import '../styles/media.css';
 
-
-const NavSmall = () => {
+const NavSmall = ({close}) => {
     return(
         <nav className="nav-small">
+            <section className="nav-small-header">
+                <figure></figure>
+                <FaWindowClose classname='close' onClick={close} />
+            </section>
             <ul>
                 <li>
                     <Link to ='/'>Home</Link>
@@ -20,6 +24,7 @@ const NavSmall = () => {
                     <Link to = '/about'>About</Link>
                 </li>
             </ul>
+            <p>Copyright &copy;</p>
         </nav>
     )
 }

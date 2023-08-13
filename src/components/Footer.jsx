@@ -29,7 +29,7 @@ const Footer = () => {
                 </figure>
                 <ul>
                     <li>
-                        <Link to='/'>Home</Link>
+                        <Link to='#header'>Home</Link>
                     </li>
                 </ul>
                 <p>Copyright &copy; {date.getFullYear()}</p>

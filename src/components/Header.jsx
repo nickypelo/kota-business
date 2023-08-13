@@ -3,35 +3,48 @@ import Nav from "./Nav.jsx";
 import NavSmall from "./Nav-small.jsx";
 import Cart from "./Cart.jsx";
 import { useState } from 'react';
+import { Link } from "react-router-dom";
 import logo from '/kotalicious_cpt-20220806-0006.jpg';
-import { FaShoppingCart, FaYinYang} from "react-icons/fa";
+import { FaShoppingCart, FaYinYang, FaAsterisk} from "react-icons/fa";
 import '../styles/components.css';
 import '../styles/media.css';
 
-
-const Header = () =>{
+const Header = ({order}) =>{
+    
     const [showCart, setShowCart] = useState(true);
-    // const [menu, setMenu] = useState(true);
-    // const change = {display : "none"}
+    const [showNav, setShowNav] = useState(true);
+   
     const cartClick = () => {
         console.log(`Cart Activated`);
         setShowCart(!showCart);   
     }
 
+    const navMenuClick = () =>{
+        console.log(`Slide Activated`);
+        setShowNav(!showNav); 
+    }
+
     return(
         <header className="header">
             <figure className="logo-placeholder" >
-                <img src={logo} className="logo-image"
-                    alt="company_logo"
-                    />
+                <Link to='/'><img src={logo} className="logo-image"
+                alt="company_logo"
+                /></Link>
             </figure>
             <Nav />
             <section className="header-icons">
-                <NavSmall/>
-                <FaYinYang onClick={cartClick} className="cart-icon menu-icon"/>
+                <FaAsterisk className="noti-icon"/>
+                {showNav ?
+                <FaYinYang onClick={navMenuClick} className="cart-icon menu-icon"/>
+                : <NavSmall 
+                    close={navMenuClick}
+                />
+                }
                 {showCart ?
                 <FaShoppingCart onClick={cartClick} className= "cart-icon" />
-                : <Cart kota="The Bae Kota" close={cartClick}
+                : <Cart
+                    close={cartClick} 
+                    orders={order}                    
                 />}
             </section>
             

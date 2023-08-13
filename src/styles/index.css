@@ -15,7 +15,6 @@ html{
 }
 
 body{
-  min-height: 100vh;
-  /* background-image: linear-gradient(red, yellow); */
+  background-image: linear-gradient(coral, yellow);
 }
 

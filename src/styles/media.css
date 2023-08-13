@@ -9,9 +9,13 @@ img{
 @media screen and (min-width: 375px){
     body{
         width: 100%;
-        background-image: radial-gradient(yellow, red);
+        /* background-image: radial-gradient(yellow, red); */
     }
 
+    .kota-img{
+        display: none;
+    }
+    
     .logo-placeholder{
         width: 80%;
     }
@@ -34,24 +38,59 @@ img{
     }
 
     .nav-small{
-        display: none;
-        position: absolute;
-        top: 3.33em;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        position: fixed;
+        top: 0;
         right: 0;
-        background-color: bisque;
-        width: min(40%, 350px);
-        
+        background-color: coral;
+        width: 100%;
+        height: 100vh;
+        margin-left: 1rem;
+        padding: 0.5em;
     }
+
+    .nav-small-header{
+        display: flex;
+        justify-content: space-between;
+        border-bottom: 3px solid lightgray;
+        height:10vh;
+        padding-bottom: inherit;
+    }
+
+    .nav-small-header figure{
+        width: 50%;
+        background-image: url(../../kotalicious_cpt-20220806-0006.jpg);
+        background-position: center center;
+        background-size: cover;
+    }
+
+
+    .nav-small ul{
+        height: 80vh;
+    }
+
     .nav-small ul li{
         list-style: none;
-        display: block;
-        padding-left: 1rem;
-        border-bottom: 1px solid lightcoral;
+        height: 2.8em;
+        display: flex;
+        flex-direction: column;
+        border-bottom: 3px solid lightgray;
     }
 
     .nav-small a, .nav-small:visited{
+        width: fit-content;
         text-decoration: none;
-        color: black
+        color: black;
+        margin: auto 0.5em;
+    }
+    
+    .nav-small p{
+        width: fit-content;
+        margin: 0 auto;
+        padding: 8px;
+        background-color: lightcoral;
     }
     
 }
@@ -64,6 +103,30 @@ img{
 
 }
 
+/*  || MEDIUM SCREEN */
+@media screen and (min-width: 520px){
+    .kota-img{
+        display: block;
+    }
+
+}
+
+/*  || MEDIUM SCREEN */
+@media screen and (max-width: 720px){
+    .menu-option{
+        flex-direction: column;
+    }
+    
+    .poster-text{
+        height: 100%;
+    }
+    .kota-details{
+        min-width: 100%;
+        margin: 0 auto;
+    }
+ 
+}
+
 /*  || TABLET */
 @media screen and (min-width: 768px){
     .special figure{
@@ -71,6 +134,10 @@ img{
         width: 100%;
         padding: 0.5em;
         margin: 0.5em;
+    }
+   
+    .poster-text{
+        width: 60%;
     }
 }
 
