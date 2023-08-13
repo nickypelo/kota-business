@@ -1,6 +1,7 @@
 import React from "react";
 import {Link} from "react-router-dom";
-import { FaInstagram, FaWhatsapp, FaWhatsappSquare } from "react-icons/fa";
+// import { HashLink } from 'react-router-hash-link';
+import { FaInstagram, FaWhatsapp, FaTiktok } from "react-icons/fa";
 import '../styles/components.css';
 import '../styles/media.css';
 import Header from './Header';
@@ -18,8 +19,9 @@ const Footer = () => {
                     <p>Rosebank</p>
                     <p>1431</p>
                 </address>
-                <Link to="https://www.instagram.com" target="_blank"><FaInstagram className="instagram-icon social"/></Link>
+                <Link to="https://www.instagram.com/kotalicious_cpt/" target="_blank"><FaInstagram className="instagram-icon social"/></Link>
                 <Link to="tel:+27746272912" target="-blank"><FaWhatsapp className="whatsapp-icon social"/></Link>
+                <Link to="https://tiktok.com" target="_blank"><FaTiktok className="whatsapp-icon social"/></Link>
             </section>
             <section className="company-section">
                 <figure>

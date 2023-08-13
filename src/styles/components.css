@@ -1,5 +1,6 @@
 .header{
     background-image: linear-gradient(to left, yellow, coral);
+    background-color: hsla(16, 53%, 37%, 0.479);
     display: flex;
     font-size: 1.5rem;
     max-height: 4em;
@@ -8,6 +9,7 @@
     position: sticky;
     top: 0;
     z-index: 999;
+    font-family: Georgia;
 
 }
 .header-icons{
@@ -34,6 +36,7 @@
 
 .nav-bar ul li{
     display: inline-block;
+    font-family:  Inter, system-ui, Avenir, Helvetica, Arial;
 }
 
 .nav-bar a{
