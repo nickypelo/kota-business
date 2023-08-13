@@ -10,8 +10,8 @@ const Content = () => {
         <main className="content">
             <figure className='poster'>
                 <section className="poster-text">
-                <p>BRINGING SPHATLO EKAPA </p> 
-                <p> It's just worth it  ..<FaRunning/></p>
+                    <p>BRINGING SPHATLO EKAPA </p> 
+                    <p> It's just worth it  ..<FaRunning/></p>
                 </section>
             </figure>
             <section className="special">

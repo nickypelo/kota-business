@@ -34,7 +34,11 @@ const Header = ({order}) =>{
             <Nav />
             <section className="header-icons">
                 {showNav ?
-                <FaYinYang onClick={navMenuClick} className="cart-icon menu-icon"/>
+                <div onClick={navMenuClick} className="cart-icon menu-icon">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 : <NavSmall 
                     close={navMenuClick}
                 />
