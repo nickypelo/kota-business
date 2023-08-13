@@ -22,7 +22,6 @@ img{
 
     .special p{
         width: 300;
-        
     }
 
     .footer{
@@ -49,6 +48,11 @@ img{
         height: 100vh;
         margin-left: 1rem;
         padding: 0.5em;
+    }
+
+
+    .reviews{
+        width: 100%;
     }
 
     .nav-small-header{
@@ -101,6 +105,10 @@ img{
         margin: 0 auto;;
     }
 
+    .reviews{
+        max-width: 80%;
+    }
+
 }
 
 /*  || MEDIUM SCREEN */
@@ -116,7 +124,7 @@ img{
     .menu-option{
         flex-direction: column;
     }
-    
+
     .poster-text{
         height: 100%;
     }

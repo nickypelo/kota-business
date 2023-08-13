@@ -33,7 +33,6 @@ const Header = ({order}) =>{
             </figure>
             <Nav />
             <section className="header-icons">
-                <FaAsterisk className="noti-icon"/>
                 {showNav ?
                 <FaYinYang onClick={navMenuClick} className="cart-icon menu-icon"/>
                 : <NavSmall 
@@ -41,7 +40,10 @@ const Header = ({order}) =>{
                 />
                 }
                 {showCart ?
-                <FaShoppingCart onClick={cartClick} className= "cart-icon" />
+                <div className="cart-and-noti">
+                    {order.length > 0 ? <FaAsterisk className="noti-icon"/> : undefined}
+                    <FaShoppingCart onClick={cartClick} className= "cart-icon" />
+                </div>
                 : <Cart
                     close={cartClick} 
                     orders={order}                    
