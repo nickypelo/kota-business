@@ -19,7 +19,7 @@ h3{
 
 .poster{
     height: 60vh;
-    background-image: url(src/assets/lovie_wam.jpg);
+    background-image: url(/home/nicodemus/Desktop/chef/javascript/work/LEVI/kota-business/src/assets/lovie_wam.jpg);
     background-position: center center;
     background-size: cover;
     display: flex;
