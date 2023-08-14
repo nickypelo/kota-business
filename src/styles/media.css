@@ -24,7 +24,7 @@ img{
     background-color: brown;
 }
 
-@media screen and (min-width: 375px){
+@media screen and (min-width: 310px){
     body{
         width: 100%;
         /* background-image: radial-gradient(yellow, red); */
@@ -33,6 +33,7 @@ img{
     .kota-img{
         display: none;
     }
+    
     
     .logo-placeholder{
         width: 80%;
