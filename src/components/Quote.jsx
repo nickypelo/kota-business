@@ -8,7 +8,7 @@ const Quote = () =>{
             <p><q>Succumb to peer pressure and get you something for those taste buds!</q>
             </p>
             <figure>
-                <img src="src/assets/founder.jpg" alt="ceo-picture" 
+                <img src="/founder.jpg" alt="ceo-picture" 
                 width="350" height="440"
                 />
                 <figcaption>Levi the Man</figcaption>

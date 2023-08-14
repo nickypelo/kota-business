@@ -19,7 +19,7 @@ h3{
 
 .poster{
     height: 60vh;
-    background-image: url(/home/nicodemus/Desktop/chef/javascript/work/LEVI/kota-business/src/assets/lovie_wam.jpg);
+    background-image: url(/lovie_wam.jpg);
     background-position: center center;
     background-size: cover;
     display: flex;
@@ -139,7 +139,7 @@ h3{
     border: 7px solid lightblue;
     width: 350px;
     height: 250px;
-    background-image: url(../assets/chip_roll.jpg);
+    background-image: url(/chip_roll.jpg);
     background-size: cover;
     background-position: center center;
 }

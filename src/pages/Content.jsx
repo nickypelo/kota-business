@@ -21,7 +21,7 @@ const Content = () => {
                     <p className="hashtag">#forgetthedietandeatakota</p>
                 </section>
                 <figure>
-                    <img src="src/assets/discount_2.jpg" alt="" width="350"/>
+                    <img src="/discount_2.jpg" alt="" width="350"/>
                 </figure>
             </section>
             <h3>Word of Mouth</h3>

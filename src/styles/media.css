@@ -83,7 +83,7 @@ img{
 
     .nav-small-header figure{
         width: 50%;
-        background-image: url(../../public/kotalicious_cpt-20220806-0006.jpg);
+        background-image: url(/kotalicious_cpt-20220806-0006.jpg);
         background-position: center center;
         background-size: cover;
     }
