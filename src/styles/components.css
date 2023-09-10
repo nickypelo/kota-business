@@ -115,6 +115,8 @@
     width: min(90%, 380px);
     border-radius: 10px;
     overflow-y: auto;
+
+    z-index: 5555;
 }
 
 .empty-order{
