@@ -47,7 +47,8 @@ const Cart = ({close, orders }) => {
     const getIds = (listOfOrders) =>{
         const list = listOfOrders.map((item)=> (item.id !== undefined ?  item.id : undefined))
         return list
-    }   
+    } 
+      
     
     /**
      * Ensures that the cart does not have duplicate items
@@ -57,6 +58,7 @@ const Cart = ({close, orders }) => {
     const uniqueIds = (listOfOrders) =>{
         return [...new Set(listOfOrders)]
     }
+
 
     /**
      * Increments the counter.
@@ -114,11 +116,12 @@ const Cart = ({close, orders }) => {
         return answer;
     }
 
+    
     return(
         <article className="orders-placed">
             <section className='cart-heading'>
                 <h4>Cart </h4>
-                <FaWindowClose class="close-cart" onClick={close} />
+                <FaWindowClose className="close-cart" onClick={close} />
             </section>
             {(orders).length<1 ? 
                 <p className="empty-order">Empty</p> 

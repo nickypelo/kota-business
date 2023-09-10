@@ -4,10 +4,10 @@ import Footer from "./components/Footer.jsx";
 import Contact from "./pages/Contact.jsx";
 import Content from "./pages/Content.jsx";
 import Menu from "./pages/Menu.jsx";
+import Account from "./pages/Account.jsx";
 import About from "./pages/About.jsx";
-
-
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import ResetPassword from "./auth/ResetPassword.jsx";
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -51,29 +51,38 @@ function App() {
     const add = [...order, ...selected];
     setOrder(add);
     console.log('check cart')
-    console.log(order)
+    console.log(order) 
   }
 
   const removedFromCart = (selectedKota) =>{
     // const id = order.filter((item) => selectedKota===item.id);
+    let item = 0;
+    for(item; item < order.length; item++){
+      if(order[item].id === selectedKota){
+        order.splice(item, 1);
+        break
+      }
+    }
     console.log('check cart')
-    setOrder([])
+    setOrder([order])
   }
 
   return (
     <div className="App">
       <Router>
-        <Header order={order}/>
-        <Routes>
-          <Route path ='/' element={<Content/>}/>
-          <Route path ='/menu' element={<Menu 
-                addedToCart={addedToCart}
-                removedFromCart={removedFromCart}
-            />}/>
-          <Route path ='/contact' element={<Contact/>}/>
-          <Route path ='/about' element={<About/>}/>
-        </Routes>
-        <Footer />
+          <Header order={order}/>
+          <Routes>
+            <Route path ='/' element={<Content/>}/>
+            <Route path ='/menu' element={<Menu 
+                  addedToCart={addedToCart}
+                  removedFromCart={removedFromCart}
+              />}/>
+            <Route path ='/contact' element={<Contact/>}/>
+            <Route path ='/about' element={<About/>}/>
+            <Route path='/profile' element={<Account/>}/>
+            <Route path='/reset' element={<ResetPassword/>}/>
+          </Routes>
+          <Footer />
       </Router>      
     </div>
   );
