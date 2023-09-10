@@ -128,9 +128,9 @@ const Account = () => {
                 <Register useLogin={haveAccount}/>
             :
                 <Login useRegister={haveAccount}
-                        setL={setLocal}
+                        // setL={setLocal}
                         flip={flip}
-                        us={setUser}
+                        // us={setUser}
                 />
             )
             :

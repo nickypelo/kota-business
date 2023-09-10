@@ -1,7 +1,7 @@
 import React, { useState} from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = ({useRegister, setL, flip, us}) => {
+const Login = ({useRegister, flip}) => {
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
