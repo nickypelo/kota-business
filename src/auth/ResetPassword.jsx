@@ -2,6 +2,10 @@ import React from 'react';
 
 const ResetPassword = () => {
 
+  const sendRequest = (e) =>{
+    e.preventDefault();
+    console.log('Reset')
+  }
 
   return (
     <article className="reset-pwd">

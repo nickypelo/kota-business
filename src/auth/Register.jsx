@@ -1,7 +1,12 @@
+import axios from 'axios';
 import React, {useState} from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 
+const Register = () => {
 
-const Register = ({useLogin}) => {
+  const redirect = useNavigate();
+
+  const URL = 'http://localhost:8000/users/registration/engage/'
 
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
@@ -9,11 +14,32 @@ const Register = ({useLogin}) => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
-  const registerUser = (e) =>{
+  const registerUser = async (e) =>{
     e.preventDefault();
     console.log('Registered')
-    useLogin();
+
+    const formData = {
+      first_name : firstname,
+      last_name : lastname,
+      email: email,
+      username: username,
+      password: password
+    }
+
+    try{
+      const response = await axios.post(URL, formData);
+      console.log(response.data)
+      redirect('/login');
+    }
+    catch(error){
+      console.log('Cant')
+    }
+
+
+    
   }
+
+  
 
   return (
     <article className="register" >
@@ -65,7 +91,7 @@ const Register = ({useLogin}) => {
                 onChange={(e)=>setPassword(e.target.value)}
                 />
         </label>
-
+{/* 
         <label htmlFor="password">Enter Password again: 
               <input 
                 type="password" 
@@ -73,11 +99,11 @@ const Register = ({useLogin}) => {
                 value={password}
                 onChange={(e)=>setPassword(e.target.value)}
                 />
-        </label>
+        </label> */}
         
-        <label htmlFor="submit-form" ><input type="submit" className='submit-form'></input></label>
+        <label htmlFor="submit-form" ><button type="submit" className='submit-form'>Register</button></label>
         <p>Already have an Account?
-          <button onClick={useLogin}>Log in</button>
+          <Link to='/login'><button>Log in</button></Link>
         </p>
 
       </form>

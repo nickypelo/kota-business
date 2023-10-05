@@ -108,7 +108,7 @@ h3{
 .menu{
     padding: 1em;
     min-height: 100vh;
-    width: min(80%, 1000px);
+    width: min(100%, 1000px);
     margin: 0 auto;
     background-image: radial-gradient(whitesmoke, rgb(194, 126, 42));
 }
@@ -185,20 +185,26 @@ h3{
     text-shadow: 1px 0 1px;
 }
 
+.purchase-history{
+    width: min(100%, 1200px);
+    
+}
+
 .time-of-purchase{
     border-bottom: 2px solid;
-    margin: 1rem;
+    /* margin: 1rem; */
 }
 
 .purchase-history h3, .time-of-purchase h4{
     text-decoration: underline;
+    
 }
 
 .purchase{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 1rem;
+    /* margin: 1rem; */
     font-size: 1rem;
 }
 

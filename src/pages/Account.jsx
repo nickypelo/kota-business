@@ -1,24 +1,10 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import Register from '../auth/Register';
-import Login from '../auth/Login';
 
 const Account = () => {
-    // const [history, setHistory] = useState([]);
-    const [show, setShow] = useState(true);
-    const [logOnto, setLogOnto] = useState(true);
-    const [user, setUser] = useState('')
+  
     const [photo, setPhoto] = useState(null);
     const [menu, setMenuItems] = useState()
-
-    const haveAccount = () => {
-        console.log('Changing')
-        setLogOnto(!logOnto);
-    }
-
-    const flip = () =>{
-        setShow(!show);
-    }
 
     const history = [
         {
@@ -123,7 +109,7 @@ const Account = () => {
      return (
         //content of the whole page
         <>
-        {show ?
+        {/* {show ?
             (logOnto ?
                 <Register useLogin={haveAccount}/>
             :
@@ -133,49 +119,49 @@ const Account = () => {
                         // us={setUser}
                 />
             )
-            :
-                <main className="account-container">
-                    <h2>Profile for {user}</h2>
-                    {/* account information */}
-                    <section className='consumer-profile'>
-                        <figure className="profile-picture">
-                            <img src='' alt="" className="picture" width='220' height='250'/>
-                            <figcaption>
-                                <div>
-                                    <input type='file'
-                                                onChange={(e)=>setPhoto(e.target.files[0])}
-                                            />
-                                    <button onClick={save}>upload</button>
+            : */}
+            <main className="account-container">
+                <h2>Profile for {'Nicholas'}</h2>
+                {/* account information */}
+                <section className='consumer-profile'>
+                    <figure className="profile-picture">
+                        <img src='' alt="" className="picture" width='220' height='250'/>
+                        <figcaption>
+                            <div>
+                                <input type='file'
+                                            onChange={(e)=>setPhoto(e.target.files[0])}
+                                        />
+                                <button onClick={save}>upload</button>
+                            </div>
+                            {/* <p>{user.first_name} and {user.last_name}</p> */}
+                        </figcaption>
+                    </figure>
+                    <button onClick={logOff}>Log Off</button>
+                </section>
+                    
+
+
+                <section className="purchase-history">
+                    <h3>Purchase history</h3>
+                    {countItems(history).map((time) => (
+                        <article className="time-of-purchase" key={time.item}>
+                            <h4 className="timeStamp">{time.item}</h4>
+
+                            {time.repeatedItems.map((purchase) => (
+                                <div className="purchase" key={purchase.id}>
+                                    <p>{purchase.order_name}</p>
+                                    <p>{purchase.order_price}</p>
+                                    {/* <p>{purchase.order_image}</p> */}
+                                    <figure className="order-image"><img src={purchase.order_image} alt=""  /></figure>
                                 </div>
-                                {/* <p>{user.first_name} and {user.last_name}</p> */}
-                            </figcaption>
-                        </figure>
-                        <button onClick={logOff}>Log Off</button>
-                    </section>
-                        
 
-
-                    <section className="purchase-history">
-                        <h3>Purchase history</h3>
-                        {countItems(history).map((time) => (
-                            <article className="time-of-purchase" key={time.item}>
-                                <h4 className="timeStamp">{time.item}</h4>
-
-                                {time.repeatedItems.map((purchase) => (
-                                    <div className="purchase" key={purchase.id}>
-                                        <p>{purchase.order_name}</p>
-                                        <p>{purchase.order_price}</p>
-                                        {/* <p>{purchase.order_image}</p> */}
-                                        <figure className="order-image"><img src={purchase.order_image} alt=""  /></figure>
-                                    </div>
-
-                                ))}
-                                
-                            </article> 
-                        ))} 
-                    </section>
-                </main>
-        }
+                            ))}
+                            
+                        </article> 
+                    ))} 
+                </section>
+            </main>
+        {/* } */}
         </>
         
   )

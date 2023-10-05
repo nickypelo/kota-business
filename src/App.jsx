@@ -9,6 +9,9 @@ import About from "./pages/About.jsx";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ResetPassword from "./auth/ResetPassword.jsx";
 import { useState, useEffect } from 'react';
+import RequireAuth from "./auth/RequireAuth.jsx";
+import Login from "./auth/Login.jsx";
+import Register from "./auth/Register.jsx";
 
 function App() {
 
@@ -77,9 +80,16 @@ function App() {
                   addedToCart={addedToCart}
                   removedFromCart={removedFromCart}
               />}/>
+
             <Route path ='/contact' element={<Contact/>}/>
             <Route path ='/about' element={<About/>}/>
-            <Route path='/profile' element={<Account/>}/>
+
+            <Route element={<RequireAuth/>}>
+              <Route path='/profile' element={<Account/>}/>
+            </Route>
+            {/* Auth routes */}
+            <Route path='/register' element={<Register/>}/>
+            <Route path='/login' element={<Login/>}/>
             <Route path='/reset' element={<ResetPassword/>}/>
           </Routes>
           <Footer />

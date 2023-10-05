@@ -1,15 +1,35 @@
-import React, { useState} from 'react';
-import { Link } from 'react-router-dom';
+import React, { useContext, useState} from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import AuthContext from '../context.jsx/AuthContext';
+import axios from 'axios';
 
 const Login = ({useRegister, flip}) => {
+
+    const redirect = useNavigate();
+    const {setUser} = useContext(AuthContext)
 
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
-    const logs = (e) =>{
+    const URL = 'http://localhost:8000/users/login/engage/'
+
+    const logs = async (e) =>{
         e.preventDefault();
-        console.log('Logged_In')
-        flip();
+
+        const formData = {
+            username, password
+        }
+
+        try{
+            const response = await axios.post(URL, formData)
+            setUser(response.data)
+            redirect('/profile')
+
+        }
+        catch(error){
+            console.log(error.message)
+        }
+
       }
   
 
@@ -36,10 +56,10 @@ const Login = ({useRegister, flip}) => {
             </label>
 
             <div className="form-options">
-                <input type="submit" name='submit' className='form-submit' />
+                <button type="submit" className='form-submit'>Submit</button>
                 <Link to='/reset'>Forgot Password</Link>
             </div>
-            <p>No account? <button onClick={useRegister}>Register</button></p>
+            <p>No account? <Link to='/register'><button>Register</button></Link></p>
         </form>
     </article>
   )
