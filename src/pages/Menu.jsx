@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState, useEffect } from "react"
 import { FaPlus, FaMinus } from "react-icons/fa";
 import axios from "axios";
+import CartContext from "../context.jsx/CartContext";
 
 class Counting{
     constructor(value){
@@ -9,12 +10,13 @@ class Counting{
     }
 }
 
-const Menu = ({addedToCart, removedFromCart}) => {
+const Menu = () => {
 
     const API_URL = 'http://localhost:8000/product/';
 
     const [menuItems, setMenuItems] = useState([]);
-   
+
+    const {addedToCart, removeFromCart} = useContext(CartContext)
 
     let [count1, setCount1] = useState(0);
     let [count2, setCount2] = useState(0);
@@ -36,6 +38,24 @@ const Menu = ({addedToCart, removedFromCart}) => {
         }else if(selectedKota===4){
             return counting4.value
         }
+    }
+
+    function check(list){
+        let group = []
+    
+        for(let i = 1; i<list.length; i++){
+            const newList = list.filter(item=> item.id===i)
+            group.push(newList)
+        }
+        const newGroup = group.filter(item=> item.length>0) //group without empty arrays. clean up
+       
+        return newGroup
+    }
+
+    function displayOnCart(list) {
+        let answer = []
+        const newList = list.map(item => answer.push(item[0]))
+        return answer
     }
 
     const counter = (selectedKota, num) =>{
@@ -60,7 +80,7 @@ const Menu = ({addedToCart, removedFromCart}) => {
             }
         }
 
-        num>0 ? addedToCart(selectedKota) : removedFromCart(selectedKota);
+        num>0 ? addedToCart(selectedKota, menuItems) : removeFromCart(selectedKota, check(menuItems));
         
     }
 

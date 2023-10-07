@@ -1,61 +1,15 @@
-import React from 'react';
+import axios from 'axios';
+import React, { useContext } from 'react';
 import { useState, useEffect } from 'react';
+import AuthContext from '../context.jsx/AuthContext';
 
 const Account = () => {
   
     const [photo, setPhoto] = useState(null);
-    const [menu, setMenuItems] = useState()
+    const [history, setHistory] = useState([])
 
-    const history = [
-        {
-            id: 1,
-            name: "CHIP ROLL KOTA",
-            price: "R40",
-            ingredients: "Deep fried chips with our special seasoning topped off with mango atchaar on toasted buns with our secret assorted sauces.",
-            img: "/chip_roll.jpg",
-            date: '4 May 2023'
-        },
-        {
-            id: 2,
-            name: "THE LOVIE WAM KOTA",
-            price: "R70",
-            ingredients: "Deep fried chips with our special seasoning, mango atchaar, fried viennas and fried polony with cheddar cheese on toasted buns with our assorted secret sauces.",
-            img: "/lovie_wam.jpg",
-            date: '5 May 2023',
-        },
-        {
-            id: 3,
-            name: "THE BAE KOTA",
-            price: "R90",
-            ingredients: "Deep fried chips with our special seasoning, mango atchaar, fried viennas and fried polony. Fashioned with our sizzling honey glazed rashers and seared rib burger. Garnished with the finest of cheddar cheese topped with our assorted secret sauces.",
-            img: "/bae.jpg",
-            date: '6 May 2023'
-        },
-        {
-            id: 4,
-            name: "VEGGIE MONATE KOTA",
-            price: "R105",
-            ingredients: "Deep fried chips with our special seasoning and atchaar. Fashioned with an assortment of vegan sausage, patty and bacon bits. Garnished with the best vegan cheese, topped with our assorted vegan sauces on toasted buns.",
-            img: "/veggie_monate.jpg",
-            date: '4 May 2023'
-        },
-        {
-            id: 4,
-            name: "VEGGIE MONATE KOTA",
-            price: "R105",
-            ingredients: "Deep fried chips with our special seasoning and atchaar. Fashioned with an assortment of vegan sausage, patty and bacon bits. Garnished with the best vegan cheese, topped with our assorted vegan sauces on toasted buns.",
-            img: "/veggie_monate.jpg",
-            date: '4 May 2023'
-        },
-        {
-            id: 2,
-            name: "VEGGIE MONATE KOTA",
-            price: "R105",
-            ingredients: "Deep fried chips with our special seasoning and atchaar. Fashioned with an assortment of vegan sausage, patty and bacon bits. Garnished with the best vegan cheese, topped with our assorted vegan sauces on toasted buns.",
-            img: "/veggie_monate.jpg",
-            date: '4 June 2023'
-        }
-    ]
+    const {user, setUser} = useContext(AuthContext);
+
     
 
     function countItems(arr) {
@@ -94,45 +48,65 @@ const Account = () => {
     }
 
     const logOff = () =>{
-    setLocal(localStorage.removeItem('allowed'));
+        setUser('')
     }
 
     const upload = async(e) =>{
         e.preventDefault();
         console.log('I got the picture');
+
+        const formData = new FormData()
+        formData.append('id', 2)
+        formData.append('image_user', 4)
+        formData.append('profile_picture', photo)
+
+        try{
+            const response = await axios.put('http://localhost:8000/image/2', formData)
+            console.log(response.data)
+        }
+        catch(error){
+            console.log('not a chance')
+        }
     }
 
-    const save = () =>{
-        console.log('save photo');
-    }
+
+    useEffect(()=>{
+        console.log('hello')
+       const getImage = async () =>{
+        try{
+            const response = await axios.get(`http://localhost:8000/image/`,{
+                'Authorization': `Token ${user[0].success}`
+            })
+        
+            const pics = response.data
+            const yes = pics.filter(item => item.image_user === user[1].user_id)
+            console.log(yes)
+            setPhoto(yes[0].profile_picture)
+            
+        }
+        catch(error){
+            console.log(error.message)
+        }
+       }
+       getImage()
+
+    },[photo])
 
      return (
         //content of the whole page
-        <>
-        {/* {show ?
-            (logOnto ?
-                <Register useLogin={haveAccount}/>
-            :
-                <Login useRegister={haveAccount}
-                        // setL={setLocal}
-                        flip={flip}
-                        // us={setUser}
-                />
-            )
-            : */}
             <main className="account-container">
                 <h2>Profile for {'Nicholas'}</h2>
                 {/* account information */}
                 <section className='consumer-profile'>
                     <figure className="profile-picture">
-                        <img src='' alt="" className="picture" width='220' height='250'/>
+                        <img src={photo} alt="" className="picture" width='220' height='250'/>
                         <figcaption>
-                            <div>
+                            <form onSubmit={upload}>
                                 <input type='file'
                                             onChange={(e)=>setPhoto(e.target.files[0])}
                                         />
-                                <button onClick={save}>upload</button>
-                            </div>
+                                <button>upload</button>
+                            </form>
                             {/* <p>{user.first_name} and {user.last_name}</p> */}
                         </figcaption>
                     </figure>
@@ -161,8 +135,6 @@ const Account = () => {
                     ))} 
                 </section>
             </main>
-        {/* } */}
-        </>
         
   )
 }

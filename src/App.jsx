@@ -76,10 +76,7 @@ function App() {
           <Header order={order}/>
           <Routes>
             <Route path ='/' element={<Content/>}/>
-            <Route path ='/menu' element={<Menu 
-                  addedToCart={addedToCart}
-                  removedFromCart={removedFromCart}
-              />}/>
+            <Route path ='/menu' element={<Menu/>}/>
 
             <Route path ='/contact' element={<Contact/>}/>
             <Route path ='/about' element={<About/>}/>

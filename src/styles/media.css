@@ -29,7 +29,9 @@ img{
     }
 
     .kota-img{
-        display: none;
+        /* display: none; */
+        /* width: min(80%, 350px); */
+        width: 150px;
     }
     
     
@@ -59,7 +61,7 @@ img{
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        position: fixed;
+        position: absolute;
         top: 0;
         right: 0;
         background-color: coral;
@@ -249,6 +251,8 @@ img{
     .kota-details{
         min-width: 100%;
         margin: 0 auto;
+       
+
     }
 
     
@@ -270,6 +274,10 @@ img{
 
     .register, .login, .reset-pwd{
         width: 450px;
+     }
+
+     .kota-details{
+        margin-left: 4rem;
      }
 }
 
@@ -341,12 +349,16 @@ img{
         width: 50%
     }
 
-    .nav-bar{
-        margin-left: 50%
-    }
-
+  
     .text{
         width: 350px;
+    }
+
+}
+
+@media screen and (min-width:1252px){
+    .nav-bar{
+        margin-left: 50%
     }
 
 }

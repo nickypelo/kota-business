@@ -1,17 +1,27 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import '../styles/components.css';
+import { useNavigate } from "react-router-dom";
+import CartContext from "../context.jsx/CartContext";
 
 class Counting{
     constructor(value){
         this.value = value;
     }
 }
-const Cart = ({close, orders }) => {
+const Cart = ({close}) => {
     //Array of none repeated orders
     let answer = []; 
 
+    const {order} = useContext(CartContext);
+
+    const redirect = useNavigate()
+
+    const change = () =>{
+        redirect('/profile')
+        close()
+    }
 
     let [count1, setCount1] = useState(0);
     let [count2, setCount2] = useState(0);
@@ -39,101 +49,125 @@ const Cart = ({close, orders }) => {
         }
     }
     
+
+    // /**
+    //  * Increments the counter.
+    //  * @param {*} values 
+    //  * @param {*} item
+    //  */
+    // const add = (values, item) =>{
+    //     if(values[item].id === 1){
+    //         // setCount1(counting1.value+=1)
+    //         counting1.value+=1;
+    //     }
+    //     else if(values[item].id === 2){
+    //         // setCount2(counting2.value+=1)
+    //         counting2.value+=1;
+    //     }
+    //     else if(values[item].id === 3){
+    //         // setCount3(counting1.value+=1)
+    //         counting3.value+=1;
+    //     }
+    //     else if(values[item].id === 4){
+    //         // setCount4(counting1.value+=1)
+    //         counting4.value+=1;
+    //     }
+    // }
+
+    // /**
+    //  * function that compiles all the functions
+    //  * to add the appropriate items in answer array
+    //  * to add the necessary counts
+    //  * @param {*} orders 
+    //  * @returns answer = unique list
+    //  */
+    // const countCartOrders = (orders) =>{
+    //     let item = 0;
+    //     let count = orders.length
+    //     let ids = uniqueIds(getIds(orders));
+
+    //     while(count > 0){    
+    //         i(ids.includes(orders[item].id)){
+    //             let firstOrder = orders[item].id;
+    //             let firstOrderIndex = ids.indexOf(firstOrder);
+    //             ids.splice(firstOrderIndex,1)
+    
+    //             answer.push(orders[item])
+    //             add(orders, item);
+    //             item++;
+    //             count--;
+    //             continue;
+    //         }
+    
+    //         add(orders, item);
+    //         item++;
+    //         count--;
+    //     }
+    //     return answer;
+    // }
+
+
+
     /**
+     * function that returns array of orders that are grouped by similarities
+     * @param {*} full array of orders
+     * @return grouped afray
+     */
+    function check(list){
+        let group = []
+    
+        for(let i = 1; i<list.length; i++){
+            const newList = list.filter(item=> item.id===i)
+            group.push(newList)
+        }
+        const newGroup = group.filter(item=> item.length>0) //group without empty arrays. clean up
+       
+        return newGroup
+    }
+
+    /**
+     * function that returns unique menu items
+     * @param {*} array of orders grouped by similarities
      * 
-     * @param {*} listOfOrders 
-     * @returns all the ids of the orders
      */
-    const getIds = (listOfOrders) =>{
-        const list = listOfOrders.map((item)=> (item.id !== undefined ?  item.id : undefined))
-        return list
-    } 
-      
+    function displayOnCart(list) {
+        let answer = []
+        const newList = list.map(item => answer.push(item[0]))
+        return answer
+    }
     
     /**
-     * Ensures that the cart does not have duplicate items
-     * @param {*} listOfOrders 
-     * @returns new List of unique keys
+     * @param {*} itemId 
+     * @param {*} list 
+     * @returns number of items in order
      */
-    const uniqueIds = (listOfOrders) =>{
-        return [...new Set(listOfOrders)]
-    }
-
-
-    /**
-     * Increments the counter.
-     * @param {*} values 
-     * @param {*} item
-     */
-    const add = (values, item) =>{
-        if(values[item].id === 1){
-            // setCount1(counting1.value+=1)
-            counting1.value+=1;
-        }
-        else if(values[item].id === 2){
-            // setCount2(counting2.value+=1)
-            counting2.value+=1;
-        }
-        else if(values[item].id === 3){
-            // setCount3(counting1.value+=1)
-            counting3.value+=1;
-        }
-        else if(values[item].id === 4){
-            // setCount4(counting1.value+=1)
-            counting4.value+=1;
-        }
-    }
-
-    /**
-     * function that compiles all the functions
-     * to add the appropriate items in answer array
-     * to add the necessary counts
-     * @param {*} orders 
-     * @returns answer = unique list
-     */
-    const countCartOrders = (orders) =>{
-        let item = 0;
-        let count = orders.length
-        let ids = uniqueIds(getIds(orders));
-
-        while(count > 0){    
-            if(ids.includes(orders[item].id)){
-                let firstOrder = orders[item].id;
-                let firstOrderIndex = ids.indexOf(firstOrder);
-                ids.splice(firstOrderIndex,1)
+    function itemCounter(id, list){
+        const counter = list.filter(group=>id === group[0].id)
     
-                answer.push(orders[item])
-                add(orders, item);
-                item++;
-                count--;
-                continue;
-            }
-    
-            add(orders, item);
-            item++;
-            count--;
-        }
-        return answer;
+        return counter[0].length
     }
-
     
+
     return(
         <article className="orders-placed">
             <section className='cart-heading'>
+                <div style={{display:'flex'}}>
                 <h4>Cart </h4>
+                <button onClick={change} style={{display:'block'}}>checkout</button>
+                </div>
                 <FaWindowClose className="close-cart" onClick={close} />
             </section>
-            {(orders).length<1 ? 
+            {(order).length<1 ? 
                 <p className="empty-order">Empty</p> 
                 :
-                countCartOrders(orders).map((order) => (
-                    <section className="orders" key={order.id}>
+                displayOnCart(check(order)).map((item) => (
+                    <section className="orders" key={item.id}>
                         <div className="order-details">
-                            <p>{`${order.name} - ${order.price}`}</p>
+                            <p>{`${item.product_name} - ${item.product_price}`}</p>
                         </div>
                         <figure className="order-image">
-                            <img src={order.img} alt=""  />
-                            <figcaption >x{returnValue(order.id)}</figcaption>
+                            <img src={item.product_img} alt=""  />
+                            <figcaption >x{itemCounter((item.id), check(order))}</figcaption>
                         </figure>
                     </section> 
     
