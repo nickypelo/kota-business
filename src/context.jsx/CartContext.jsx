@@ -16,16 +16,19 @@ export const CartProvider = ({children}) =>{
         const add = [...order, ...selected];
         setOrder(add);
         console.log('check cart');
-        console.log(order)
     }
     
     const removeFromCart = (selectedKota, ordersList) =>{
         const cartOrder = ordersList.filter(item => selectedKota === item[0].id)
-        const remove = order.indexOf(cartOrder[0][0])
-        const newOrder = order
-        newOrder.splice(remove, 1)
-        console.log(newOrder)
-        setOrder(newOrder)
+
+        if(cartOrder.length>0){
+            const remove = order.indexOf(cartOrder[0][0])
+            const newOrder = order
+            newOrder.splice(remove, 1)
+            setOrder(newOrder)
+            console.log('Nicholas')
+        }
+
     }
 
     const cartData = {

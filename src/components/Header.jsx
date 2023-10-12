@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useContext } from "react";
 import Nav from "./Nav.jsx";
 import NavSmall from "./Nav-small.jsx";
 import Cart from "./Cart.jsx";
@@ -8,16 +8,18 @@ import logo from '/kota-logo.png';
 import { FaShoppingCart, FaAsterisk, FaUser } from "react-icons/fa";
 import '../styles/components.css';
 import '../styles/media.css';
+import CartContext from "../context.jsx/CartContext.jsx";
 
-const Header = ({order}) =>{
+const Header = () =>{
+
+    const {order} = useContext(CartContext)
     
     const [showCart, setShowCart] = useState(true);
     const [showNav, setShowNav] = useState(true);
     const [showUser, setShowUser] = useState(false)
    
     const cartClick = () => {
-        console.log(`Cart Activated`);
-        setShowCart(!showCart);   
+        setShowCart(!showCart);  
     }
 
     const navMenuClick = () =>{

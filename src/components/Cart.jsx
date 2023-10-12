@@ -1,21 +1,16 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { useState } from "react";
 import { FaWindowClose } from "react-icons/fa";
 import '../styles/components.css';
 import { useNavigate } from "react-router-dom";
 import CartContext from "../context.jsx/CartContext";
 
-class Counting{
-    constructor(value){
-        this.value = value;
-    }
-}
+
 const Cart = ({close}) => {
-    //Array of none repeated orders
-    let answer = []; 
 
     const {order} = useContext(CartContext);
 
+    //checkout option takes you to profile page
     const redirect = useNavigate()
 
     const change = () =>{
@@ -23,15 +18,13 @@ const Cart = ({close}) => {
         close()
     }
 
-    let [count1, setCount1] = useState(0);
-    let [count2, setCount2] = useState(0);
-    let [count3, setCount3] = useState(0);
-    let [count4, setCount4] = useState(0);
+    const [count1, setCount1] = useState(0);
+    const [count2, setCount2] = useState(0);
+    const [count3, setCount3] = useState(0);
+    const [count4, setCount4] = useState(0);
 
-    const counting1 = new Counting(count1);
-    const counting2 = new Counting(count2);
-    const counting3 = new Counting(count3);
-    const counting4 = new Counting(count4);
+    const [display, setDisplay]= useState([])
+
     
     /**
      * @param: unique key of unique orders
@@ -49,6 +42,7 @@ const Cart = ({close}) => {
         }
     }
     
+ 
 
     // /**
     //  * Increments the counter.
@@ -133,7 +127,8 @@ const Cart = ({close}) => {
     function displayOnCart(list) {
         let answer = []
         const newList = list.map(item => answer.push(item[0]))
-        return answer
+        // return answer
+        setDisplay(answer)
     }
     
     /**
@@ -144,9 +139,17 @@ const Cart = ({close}) => {
     function itemCounter(id, list){
         const counter = list.filter(group=>id === group[0].id)
     
-        return counter[0].length
+        if(counter[0]){
+            return counter[0].length
+        }
+        return 0
     }
     
+    useEffect(()=>{
+        displayOnCart(check(order))
+        console.log(display)
+
+    },[order])
 
     return(
         <article className="orders-placed">
@@ -160,7 +163,7 @@ const Cart = ({close}) => {
             {(order).length<1 ? 
                 <p className="empty-order">Empty</p> 
                 :
-                displayOnCart(check(order)).map((item) => (
+                display.map((item) => (
                     <section className="orders" key={item.id}>
                         <div className="order-details">
                             <p>{`${item.product_name} - ${item.product_price}`}</p>

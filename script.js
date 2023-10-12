@@ -1,4 +1,4 @@
-const menuItems = [
+let menuItems = [
     {
         id: 1,
         name: "CHIP ROLL KOTA",
@@ -42,20 +42,40 @@ function check(list){
     return hey
 }
 
-function needed(list) {
+function display(list) {
     let answer = []
     const newList = list.map(item => answer.push(item[0]))
     return answer
 }
 
 
-console.log(needed(check(menuItems)))
-console.log((check(menuItems)))
+// console.log(display(check(menuItems)))
+// console.log((check(menuItems)))
 
-function yep(item, list){
+function counting(item, list){
     const menu = list.filter(i=>item === i[0].id)
     
-    return menu
+    if(menu[0]){
+        return menu[0].length
+    }
+    return 0
 }
 
-console.log(yep(4,(check(menuItems))))
+function removing(myId,myList){
+    const wanted = myList.filter(item => myId === item[0].id)
+
+    if(wanted.length>0){
+        const remove = menuItems.indexOf(wanted[0][0])
+        const newMenu = menuItems
+        newMenu.splice(remove, 1)
+        menuItems = newMenu
+
+        return menuItems
+    }
+   
+}
+
+// console.log(counting(5,(check(menuItems))))
+// console.log(menuItems)
+console.log(removing(3, check(menuItems)))
+console.log(removing(3, check(menuItems)))

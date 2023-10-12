@@ -4,12 +4,6 @@ import { FaPlus, FaMinus } from "react-icons/fa";
 import axios from "axios";
 import CartContext from "../context.jsx/CartContext";
 
-class Counting{
-    constructor(value){
-        this.value = value;
-    }
-}
-
 const Menu = () => {
 
     const API_URL = 'http://localhost:8000/product/';
@@ -23,20 +17,15 @@ const Menu = () => {
     let [count3, setCount3] = useState(0);
     let [count4, setCount4] = useState(0);
 
-    const counting1 = new Counting(count1);
-    const counting2 = new Counting(count2);
-    const counting3 = new Counting(count3);
-    const counting4 = new Counting(count4);
-
     const returnValue = (selectedKota) =>{
         if(selectedKota===1){
-            return counting1.value;
+            return count1
         }else if(selectedKota===2){
-            return counting2.value
+            return count2
         }else if(selectedKota===3){
-            return counting3.value
+            return count3
         }else if(selectedKota===4){
-            return counting4.value
+            return count4
         }
     }
 
@@ -52,31 +41,16 @@ const Menu = () => {
         return newGroup
     }
 
-    function displayOnCart(list) {
-        let answer = []
-        const newList = list.map(item => answer.push(item[0]))
-        return answer
-    }
-
     const counter = (selectedKota, num) =>{
-
         if(returnValue(selectedKota) + num >= 0){
             if(selectedKota === 1){
-                count1+=num;
-                setCount1(count1)
-                counting1.value+=count1;
+                setCount1(count1 + num)
             }else if(selectedKota === 2){
-                count2+=num;
-                setCount2(count2)
-                counting2.value+=count2;
+                setCount2(count2+num)
             }else if(selectedKota === 3){
-                count3+=num;
-                setCount3(count3)
-                counting3.value+=count3;
+                setCount3(count3+num)
             }else if(selectedKota === 4){
-                count4+=num;
-                setCount4(count4)
-                counting4.value+=count4;
+                setCount4(count4+num)
             }
         }
 
@@ -112,7 +86,7 @@ const Menu = () => {
                             </div>
                             <p className="ingredients">{menu.product_ingredients}</p>
                             <div className="addOn-cart">
-                                <FaMinus className= "addOn-icon"  onClick={() => counter(menu.id,-1)}/>
+                                <FaMinus className= "addOn-icon"  onClick={() => counter(menu.id, -1)}/>
                                 <p>{returnValue(menu.id)}</p>
                                 <FaPlus className= "addOn-icon"  onClick={() => counter(menu.id, 1)}/>
                             </div>
